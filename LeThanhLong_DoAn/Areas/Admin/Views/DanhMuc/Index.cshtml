@@ -1,0 +1,25 @@
+﻿@model List<LeThanhLong_DoAn.Models.DanhMuc>
+@{
+    ViewBag.Title = "Index"; 
+}
+
+@section Main
+{
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Mã Danh mục</th>
+                <th>Tên Danh mục</th>               
+                <th>Chức năng</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(row => item.MaDanhMuc)</td>
+                    <td style="font-size: 18px">@Html.DisplayFor(row => item.TenDanhMuc)</td>                 
+                    <td><a class="btn btn-success">Cập nhật</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+}

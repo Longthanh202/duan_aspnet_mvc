@@ -1,0 +1,50 @@
+﻿@model LeThanhLong_DoAn.ViewModels.RegisterVM
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@using (@Html.BeginForm("Register", "Account", FormMethod.Post,
+new { enctype = "multipart/form-data" }))
+{
+    <div class="row w-50 mx-auto" style="padding-top: 30px; margin: 20px 0px; border: 3px solid aqua; border-radius: 5px; background-color: #C6E2FF">
+        <div class="col-md-12">
+            <h2 style="text-align:center">ĐĂNG KÝ</h2>
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.UserName, "UserName")
+            @Html.TextBoxFor(row => row.UserName, new { @class = "form-control", placeholder = "UserName" })
+            @Html.ValidationMessageFor(row => row.UserName)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.PassWord, "PassWord")
+            @Html.PasswordFor(row => row.PassWord, new { @class = "form-control", placeholder = "PassWord" })
+            @Html.ValidationMessageFor(row => row.PassWord)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.ConfirmPass, "ConfirmPassWord")
+            @Html.PasswordFor(row => row.ConfirmPass, new { @class = "form-control", placeholder = "ConfirmPassWord" })
+            @Html.ValidationMessageFor(row => row.ConfirmPass)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.Email, "Email")
+            @Html.TextBoxFor(row => row.Email, new { @class = "form-control", placeholder = "Email" })
+            @Html.ValidationMessageFor(row => row.Email)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.Sdt, "Số điện thoại")
+            @Html.TextBoxFor(row => row.Sdt, new { @class = "form-control", placeholder = "Số điện thoại" })
+            @Html.ValidationMessageFor(row => row.Sdt)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.DiaChi, "Địa chỉ")
+            @Html.TextBoxFor(row => row.DiaChi, new { @class = "form-control", placeholder = "Địa chỉ" })
+            @Html.ValidationMessageFor(row => row.DiaChi)
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" style="margin: 15px 0px">Đăng ký</button>
+        </div>
+    </div>
+}
+

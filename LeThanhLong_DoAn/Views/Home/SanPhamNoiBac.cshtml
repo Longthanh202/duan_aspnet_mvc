@@ -1,0 +1,24 @@
+﻿@model List<LeThanhLong_DoAn.Models.SanPham>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card" style="height:500px;">
+                    <img src="~/img/@item.HinhAnh" class="card-img-top" style="height:40%" />
+                    <div class="card-body">
+                        <h5 class="card-title" style="color:blue; height:50%">@item.TenSanPham</h5>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Thương hiệu: @item.ThuongHieu.TenThuongHieu
+                            </small>
+                        </p>
+                        <h6 class="card-text" style="font-weight:bold">@item.Gia.ToString("C")</h6>
+                        <a href="#" class="btn btn-success" style="text-align:center; width:100%">Chọn mua</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

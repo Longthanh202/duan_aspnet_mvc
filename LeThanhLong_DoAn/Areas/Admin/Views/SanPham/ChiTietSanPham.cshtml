@@ -1,0 +1,58 @@
+﻿@model LeThanhLong_DoAn.Models.SanPham
+@{
+    ViewBag.Title = "ChiTietSanPham";   
+}
+
+<div class="container">
+    <div class="row w-75 mx-auto">
+        <div class="col-md-6">
+            <img src="~/img/@Model.HinhAnh" style="width: 350px; height:300px" />
+        </div>
+        <div class="col-md-6">
+            <h2 style="font-weight: bold; font-size:22px; color: blue">@Model.TenSanPham</h2>
+            <h4 style="font-weight:bold; color:red; font-size: 20px">@Model.Gia.ToString("C")</h4>
+            <p>Thương hiệu: @Model.ThuongHieu.TenThuongHieu</p>
+            <p>Danh mục: @Model.DanhMuc.TenDanhMuc</p>
+            <a class="btn btn-primary">Mua ngay</a>
+        </div>
+        <div class="col-md-7">
+            <h4>Thông tin chi tiết</h4>
+            <h5 style="font-weight:normal">@Model.ChiTietSanPham</h5>
+        </div>
+        <div class="col-md-5">
+            <h4>Cấu hình</h4>
+            <table class="table table-striped">
+                <tr>
+                    <td>CPU</td>
+                    <td>@Model.CauHinh.CPU</td>
+                </tr>
+                <tr>
+                    <td>RAM</td>
+                    <td>@Model.CauHinh.RAM</td>
+                </tr>
+                <tr>
+                    <td>Ổ Cứng</td>
+                    <td>@Model.CauHinh.OCung</td>
+                </tr>
+                <tr>
+                    <td>Màn hình</td>
+                    <td>@Model.CauHinh.ManHinh</td>
+                </tr>
+                <tr>
+                    <td>Card</td>
+                    <td>@Model.CauHinh.CardManHinh</td>
+                </tr>
+                <tr>
+                    <td>Kết nối</td>
+                    <td>@Model.CauHinh.KetNoi</td>
+                </tr>
+                <tr>
+                    <td>Hệ điều hành</td>
+                    <td>@Model.CauHinh.HeDieuHanh</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <a href="@Url.Action("index", "sanpham")">Quay về</a>
+</div>
+

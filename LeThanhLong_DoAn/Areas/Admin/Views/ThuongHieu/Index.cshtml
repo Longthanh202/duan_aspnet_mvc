@@ -1,0 +1,28 @@
+﻿@model List<LeThanhLong_DoAn.Models.ThuongHieu>
+@{
+    ViewBag.Title = "ThuongHieu";
+}
+
+@section Main
+{
+    <div class="container">      
+        <table class="table">
+            <tr>
+                <th>Mã Thương hiệu</th>
+                <th>Tên Thương hiệu</th>
+                <th>Hình ảnh</th>
+                <th>Chức năng</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(row=> item.MaThuongHieu)</td>
+                    <td style="font-size: 18px">@Html.DisplayFor(row => item.TenThuongHieu)</td>
+                    <td><img src="~/img/@Html.DisplayFor(row => item.HinhAnh)" style="width: 300px; height: 150px" /></td>
+                    <td><a class="btn btn-success">Cập nhật</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+

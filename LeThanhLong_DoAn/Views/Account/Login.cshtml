@@ -1,0 +1,30 @@
+﻿@model LeThanhLong_DoAn.ViewModels.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@using (@Html.BeginForm("Login", "Account", FormMethod.Post,
+new { enctype = "multipart/form-data" }))
+{
+    <div class="row w-25 mx-auto" style="padding-top: 30px; margin: 20px 0px; border: 3px solid aqua; border-radius: 5px; background-color: #C6E2FF">
+        <div class="col-md-12">
+            <h2 style="text-align:center">ĐĂNG NHẬP</h2>
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.UserName, "UserName")
+            @Html.TextBoxFor(row => row.UserName, new { @class = "form-control", placeholder = "UserName" })
+            @Html.ValidationMessageFor(row => row.UserName)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.PassWord, "PassWord")
+            @Html.PasswordFor(row => row.PassWord, new { @class = "form-control", placeholder = "PassWord" })
+            @Html.ValidationMessageFor(row => row.PassWord)
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" style="margin: 15px 0px">Đăng nhập</button>
+        </div>       
+    </div>
+}
+

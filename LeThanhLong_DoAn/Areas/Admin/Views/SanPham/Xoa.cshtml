@@ -1,0 +1,27 @@
+﻿@model LeThanhLong_DoAn.Models.SanPham
+@{
+    ViewBag.Title = "Xoa";
+ }
+
+<form action="/admin/sanpham/xoa/@Model.MaSanPham" method="post" class="container">
+    <input type="hidden" name="MaSp" value="@Model.MaSanPham" />
+    <table class="table">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Tên thương hiệu</th>
+            <th>Tên danh mục</th>
+        </tr>
+        <tr>
+            <td style="width:50%">@Model.TenSanPham</td>
+            <td>@Model.Gia.ToString("C")</td>
+            <td>@Model.ThuongHieu.TenThuongHieu</td>
+            <td>@Model.DanhMuc.TenDanhMuc</td>
+        </tr>
+    </table>
+    <div class="col-md-12" style="padding-top:20px; padding-bottom: 50px">
+        <button type="submit" class="btn btn-success">Xóa sản phẩm</button>
+        <a href="/admin/sanpham" class="btn btn-danger">Hủy bỏ</a>
+    </div>
+</form>
+

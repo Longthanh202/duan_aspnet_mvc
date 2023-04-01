@@ -1,0 +1,110 @@
+﻿@model List<LeThanhLong_DoAn.Models.SanPham>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    string icon = "";
+    if (ViewBag.Icon == "fa-sort-desc")
+    {
+        icon = "fa-sort-asc";
+    }
+    else
+    {
+        icon = "fa-sort-desc";
+    }
+}
+
+@section Main
+{
+    <div class="container">
+        <a href="/admin/sanpham/them" class="btn btn-primary" style="margin:20px 0px">Thêm sản phẩm mới</a>
+        <table class="table">
+            <tr>
+                <th>
+                    <a href="/admin/sanpham/index?sortColumn=MaSanPham&Icon=@icon">Mã sản phẩm</a>
+                    @if (ViewBag.sortColumn == "MaSanPham")
+                    {
+                        <i class="fa @ViewBag.Icon"></i>
+                    }
+                </th>
+                <th>
+                    <a href="/admin/sanpham/index?sortColumn=TenSanPham&Icon=@icon">Tên sản phẩm</a>
+                    @if (ViewBag.sortColumn == "TenSanPham")
+                    {
+                        <i class="fa @ViewBag.Icon"></i>
+                    }
+                </th>
+                <th>
+                    <a href="/admin/sanpham/index?sortColumn=Gia&Icon=@icon">Giá</a>
+                    @if (ViewBag.sortColumn == "Gia")
+                    {
+                        <i class="fa @ViewBag.Icon"></i>
+                    }
+                </th>
+                <th>Hình ảnh</th>
+                <th></th>
+                <th>Chức năng</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(row => item.MaSanPham)</td>
+                    <td style="font-size: 18px; width: 40%">@Html.DisplayFor(row => item.TenSanPham)</td>
+                    <td style="color: red; font-weight: bold">@Html.DisplayFor(row => item.Gia)</td>
+                    <td><img src="~/img/@Html.DisplayFor(row => item.HinhAnh)" style="width: 150px; height: 100px" /></td>
+                    <td>@Html.ActionLink("Detail", "ChiTietSanPham", new { controller = "sanpham", id = item.MaSanPham }, new { @class = "btn btn-success" })</td>
+                    <td>@Html.ActionLink("Delete", "Xoa", new { controller = "sanpham", area = "admin", id = item.MaSanPham }, new { @class = "btn btn-danger" })</td>
+                    <td>@Html.ActionLink("Update", "Capnhat", new { controller = "sanpham", area = "admin", id = item.MaSanPham }, new { @class = "btn btn-info" })</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="7">
+                    @{
+                        int leftPage = ViewBag.page - 1;
+                        if (leftPage <= 0)
+                        {
+                            leftPage = 1;
+                        }
+                        int rightPage = ViewBag.page + 1;
+                        if (rightPage > ViewBag.soTrang)
+                        {
+                            rightPage = ViewBag.soTrang;
+                        }
+                    }
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="/admin/sanpham/index?page=@leftPage">
+                                <<
+                            </a>
+                        </li>
+                        @for (int i = 0; i < ViewBag.soTrang; i++)
+                        {
+                            if (i + 1 == ViewBag.page)
+                            {
+                                <li class="page-item active">
+                                    <a class="page-link" href="/admin/sanpham/index?page=@(i+1)">
+                                        @(i + 1)
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="/admin/sanpham/index?page=@(i+1)">
+                                        @(i + 1)
+                                    </a>
+                                </li>
+                            }
+                        }
+                        <li class="page-item active">
+                            <a class="page-link" href="/admin/sanpham/index?page=@rightPage">
+                                >>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    }
+

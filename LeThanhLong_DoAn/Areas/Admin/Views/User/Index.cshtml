@@ -1,0 +1,31 @@
+﻿@model List<LeThanhLong_DoAn.Identity.AppUser>
+@{
+    ViewBag.Title = "User";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h4>DANH SÁCH CÁC TÀI KHOẢN</h4>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Address</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.DiaChi</td>
+        </tr>
+        }
+    </table>
+</div>
+

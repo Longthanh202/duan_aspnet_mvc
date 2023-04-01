@@ -1,0 +1,55 @@
+﻿@model LeThanhLong_DoAn.Models.SanPham
+@{
+    ViewBag.Title = "Them";  
+}
+
+@using (@Html.BeginForm("Them", "SanPham", new {area = "Admin"} ,FormMethod.Post,
+new { enctype = "multipart/form-data" }))
+{
+    <div class="row w-50 mx-auto" style="padding-top: 30px; border: 3px solid #009900; margin: 20px 0px; border-radius: 10px; background-color: #CCFFFF; ">
+        <div class ="col-md-12">
+            <h2 style="text-align:center">THÊM SẢN PHẨM MỚI</h2>
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.TenSanPham, "Tên sản phẩm")
+            @Html.TextBoxFor(row => row.TenSanPham, new { @class = "form-control", placeholder = "Tên sản phẩm" })
+            @Html.ValidationMessageFor(row => row.TenSanPham)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.Gia, "Giá sản phẩm")
+            @Html.TextBoxFor(row => row.Gia, new { @class = "form-control", placeholder = "Giá sản phẩm" })
+            @Html.ValidationMessageFor(row => row.Gia)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.ChiTietSanPham, "Chi tiết sản phẩm")
+            @Html.TextBoxFor(row => row.ChiTietSanPham, new { @class = "form-control Chitiet", placeholder = "Chi tiết sản phẩm" })
+            @Html.ValidationMessageFor(row => row.ChiTietSanPham)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.MaThuongHieu, "Thương hiệu")
+            @Html.DropDownListFor(row => row.MaThuongHieu, new SelectList(ViewBag.ThuongHieu,
+                "MaThuongHieu", "TenThuonghieu"), "Mời chọn", new { @class = "form-control" })
+            @Html.ValidationMessageFor(row => row.MaThuongHieu)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.MaDanhMuc, "Danh mục")
+            @Html.DropDownListFor(row => row.MaDanhMuc, new SelectList(ViewBag.DanhMuc,
+                "MaDanhMuc", "TenDanhMuc"), "Mời chọn", new { @class = "form-control" })
+            @Html.ValidationMessageFor(row => row.MaDanhMuc)
+        </div>
+        <div class="col-md-12">
+            @Html.LabelFor(row => row.MaCauHinh, "Cấu hình")
+            @Html.DropDownListFor(row => row.MaCauHinh, new SelectList(ViewBag.CauHinh,
+             "MaCauHinh", "MaCauHinh"), "Mời chọn", new { @class = "form-control" })
+        </div>
+        <div class="col-md-12" style="padding-top:5px">
+            @Html.LabelFor(row => row.HinhAnh, "Hình ảnh")
+            <input type="file" name="imgFile" accept="image/*" placeholder="Ảnh" />                     
+        </div>
+        <div class="col-md-12" style="padding-top:20px; padding-bottom: 50px">
+            <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+            <a href="/admin/sanpham" class="btn btn-danger">Hủy bỏ</a>
+        </div>
+    </div>
+}
+
